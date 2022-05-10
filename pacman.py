@@ -139,10 +139,43 @@ def move():
                 vector(0, 5),
                 vector(0, -5),
             ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
-
+            dist = pacman - point
+            if (dist.x > 0 and dist.y > 0) and (valid(point + vector(5, 0)) or valid(point + vector(0, 5))):
+                options = [
+                    vector(5, 0),
+                    vector(0, 5),
+                ] 
+                plan = choice(options)
+                course.x = plan.x
+                course.y = plan.y
+            elif (dist.x > 0 and dist.y < 0) and (valid(point + vector(5, 0)) or valid(point + vector(0, -5))):
+                options = [
+                    vector(5, 0),
+                    vector(0, -5),
+                ] 
+                plan = choice(options)
+                course.x = plan.x
+                course.y = plan.y
+            elif (dist.x < 0 and dist.y < 0) and (valid(point + vector(-5, 0)) or valid(point + vector(0, -5))):
+                options = [
+                    vector(-5, 0),
+                    vector(0, -5),
+                ] 
+                plan = choice(options)
+                course.x = plan.x
+                course.y = plan.y
+            elif (dist.x < 0 and dist.y > 0) and (valid(point + vector(-5, 0)) or valid(point + vector(0, 5))):
+                options = [
+                    vector(-5, 0),
+                    vector(0, 5),
+                ] 
+                plan = choice(options)
+                course.x = plan.x
+                course.y = plan.y
+            else:
+                plan = choice(options)
+                course.x = plan.x
+                course.y = plan.y
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
