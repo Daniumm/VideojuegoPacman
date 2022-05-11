@@ -133,13 +133,16 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+            #Aqui estan las funciones por default de los fantasmas
             options = [
                 vector(5, 0),
                 vector(-5, 0),
                 vector(0, 5),
                 vector(0, -5),
             ]
+            #Dist son las coordenadas de la diferencia de posiciones de pacman y un fantasma
             dist = pacman - point
+            #Aqui se checa si el fantasma esta en el cuadrante arriba a la derecha y que si se puede mover en esas direcciones, si no va a las opciones por default
             if (dist.x > 0 and dist.y > 0) and (valid(point + vector(5, 0)) or valid(point + vector(0, 5))):
                 options = [
                     vector(5, 0),
@@ -148,6 +151,7 @@ def move():
                 plan = choice(options)
                 course.x = plan.x
                 course.y = plan.y
+            #Aqui se checa si el fantasma esta en el cuadrante arriba a la izquierda y que si se puede mover en esas direcciones, si no va a las opciones por default
             elif (dist.x > 0 and dist.y < 0) and (valid(point + vector(5, 0)) or valid(point + vector(0, -5))):
                 options = [
                     vector(5, 0),
@@ -156,6 +160,7 @@ def move():
                 plan = choice(options)
                 course.x = plan.x
                 course.y = plan.y
+            #Aqui se checa si el fantasma esta en el cuadrante abajo a la izquierda y que si se puede mover en esas direcciones, si no va a las opciones por default
             elif (dist.x < 0 and dist.y < 0) and (valid(point + vector(-5, 0)) or valid(point + vector(0, -5))):
                 options = [
                     vector(-5, 0),
@@ -164,6 +169,7 @@ def move():
                 plan = choice(options)
                 course.x = plan.x
                 course.y = plan.y
+            #Aqui se checa si el fantasma esta en el cuadrante abajo a la derecha y que si se puede mover en esas direcciones, si no va a las opciones por default
             elif (dist.x < 0 and dist.y > 0) and (valid(point + vector(-5, 0)) or valid(point + vector(0, 5))):
                 options = [
                     vector(-5, 0),
@@ -172,6 +178,7 @@ def move():
                 plan = choice(options)
                 course.x = plan.x
                 course.y = plan.y
+            #Si no encaja en ninguno de las opciones de arriba significa que esta atorado por lo que usamos las opciones por default
             else:
                 plan = choice(options)
                 course.x = plan.x
