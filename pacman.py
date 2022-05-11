@@ -4,7 +4,7 @@ Juego: Pacman
 Programador 1: Daniel Alejandro Martinez Rosete
 Programador 2: Andrés Eugenio Martínez Sánchez 
 
-Fecha:10/05/22
+Fecha:10/05/22 ....
 
 """
 
